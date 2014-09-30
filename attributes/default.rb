@@ -68,6 +68,8 @@ default['openstack']['telemetry']['service-credentials']['insecure'] = false
 
 default['openstack']['telemetry']['sample_source'] = 'openstack'
 
+default['openstack']['telemetry']['service_credentials']['os_endpoint_type'] = 'publicURL'
+
 case node['openstack']['compute']['driver']
 when 'libvirt.LibvirtDriver'
   default['openstack']['telemetry']['hypervisor_inspector'] = 'libvirt'

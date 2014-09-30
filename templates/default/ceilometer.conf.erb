@@ -125,3 +125,6 @@ os_cacert = <%= node['openstack']['telemetry']['service-credentials']['cafile'] 
 
 # Verify HTTPS connections. (boolean value, for service polling authentication)
 insecure = <%= node['openstack']['telemetry']['service-credentials']['insecure'] %>
+
+# Endpoint type to use (publicURL, internalURL or adminURL)
+os_endpoint_type = <%= node['openstack']['telemetry']['service-credentials']['os_endpoint_type'] %>
