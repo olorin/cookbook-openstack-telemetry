@@ -89,3 +89,7 @@ api_retry_count = <%= node['openstack']['compute']['vmware']['api_retry_count'] 
 wsdl_location = <%= node['openstack']['compute']['vmware']['wsdl_location'] %>
   <% end %>
 <% end %>
+
+[service_credentials]
+# Endpoint type to use (publicURL, internalURL or adminURL)
+os_endpoint_type = <%= node['openstack']['telemetry']['service-credentials']['os_endpoint_type'] %>
