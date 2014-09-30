@@ -91,5 +91,15 @@ wsdl_location = <%= node['openstack']['compute']['vmware']['wsdl_location'] %>
 <% end %>
 
 [service_credentials]
+os_region_name = <%= node['openstack']['telemetry']['region'] %>
+
+# A PEM encoded Certificate Authority to use when verifying HTTPs connections. (for service polling authentication)
+<% if node['openstack']['telemetry']['service-credentials']['cafile'] %>
+os_cacert = <%= node['openstack']['telemetry']['service-credentials']['cafile'] %>
+<% end %>
+
+# Verify HTTPS connections. (boolean value, for service polling authentication)
+insecure = <%= node['openstack']['telemetry']['service-credentials']['insecure'] %>
+
 # Endpoint type to use (publicURL, internalURL or adminURL)
-os_endpoint_type = <%= node['openstack']['telemetry']['service_credentials']['os_endpoint_type'] %>
+os_endpoint_type = <%= node['openstack']['telemetry']['service-credentials']['os_endpoint_type'] %>
