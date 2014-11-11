@@ -85,6 +85,8 @@ if node['openstack']['telemetry']['hypervisor_inspector'] == 'vsphere'
   vmware_host_pass = get_secret node['openstack']['compute']['vmware']['secret_name']
 end
 
+rabbitmq_publisher = node['openstack']['telemetry']['rabbitmq_publisher']
+
 template node['openstack']['telemetry']['conf'] do
   source 'ceilometer.conf.erb'
   owner  node['openstack']['telemetry']['user']
@@ -105,6 +107,7 @@ template node['openstack']['telemetry']['conf'] do
     metering_secret: metering_secret,
     api_bind_host: telemetry_api_bind.host,
     api_bind_port: telemetry_api_bind.port,
-    vmware_host_pass: vmware_host_pass
+    vmware_host_pass: vmware_host_pass,
+    rabbitmq_publisher: rabbitmq_publisher
   )
 end

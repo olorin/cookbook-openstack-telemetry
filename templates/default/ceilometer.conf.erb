@@ -30,6 +30,15 @@ rabbit_use_ssl = <%= node["openstack"]["mq"]["telemetry"]["rabbit"]["use_ssl"] %
 rpc_backend = ceilometer.openstack.common.rpc.impl_kombu
 <% end %>
 
+<% if @rabbitmq_publisher %>
+publisher_exchange = "ceilometer-rabbit-publisher-exchange"
+publisher_queue = "ceilometer-rabbit-publisher-queue"
+publisher_rabbit_user = <%= node["openstack"]["mq"]["telemetry"]["rabbit"]["userid"] %>
+publisher_rabbit_port = <%= node["openstack"]["mq"]["telemetry"]["rabbit"]["port"] %>
+publisher_rabbit_host = <%= node["openstack"]["mq"]["telemetry"]["rabbit"]["host"] %>
+publisher_rabbit_password = <%= @mq_password %>
+<% end %>
+
 <% if @mq_service_type == "qpid"  %>
 ##### QPID #####
 rpc_backend=ceilometer.openstack.common.rpc.impl_qpid
