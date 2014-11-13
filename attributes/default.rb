@@ -68,7 +68,7 @@ default['openstack']['telemetry']['service-credentials']['insecure'] = false
 
 default['openstack']['telemetry']['sample_source'] = 'openstack'
 
-default['openstack']['telemetry']['service_credentials']['os_endpoint_type'] = 'publicURL'
+default['openstack']['telemetry']['service-credentials']['os_endpoint_type'] = 'publicURL'
 
 default['openstack']['telemetry']['rabbitmq_publisher'] = false
 
