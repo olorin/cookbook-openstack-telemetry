@@ -23,9 +23,14 @@ amqp_auto_delete=<%= node["openstack"]["mq"]["telemetry"]["auto_delete"] %>
 ##### RABBITMQ #####
 rabbit_userid = <%= node["openstack"]["mq"]["telemetry"]["rabbit"]["userid"] %>
 rabbit_password = <%= @mq_password %>
+rabbit_virtual_host = <%= node["openstack"]["mq"]["telemetry"]["rabbit"]["vhost"] %>
+<% if node["openstack"]["mq"]["telemetry"]["rabbit"]["ha"] -%>
+rabbit_hosts=<%= @rabbit_hosts %>
+rabbit_ha_queues=True
+<% else -%>
 rabbit_port = <%= node["openstack"]["mq"]["telemetry"]["rabbit"]["port"] %>
 rabbit_host = <%= node["openstack"]["mq"]["telemetry"]["rabbit"]["host"] %>
-rabbit_virtual_host = <%= node["openstack"]["mq"]["telemetry"]["rabbit"]["vhost"] %>
+<% end %>
 rabbit_use_ssl = <%= node["openstack"]["mq"]["telemetry"]["rabbit"]["use_ssl"] %>
 rpc_backend = ceilometer.openstack.common.rpc.impl_kombu
 <% end %>
